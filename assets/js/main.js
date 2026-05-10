@@ -48,10 +48,14 @@
     ".section__head",
     ".about__lead",
     ".about__pillars",
+    ".voice__media",
+    ".voice__body",
     ".svc__media",
     ".svc__body",
     ".flow__col",
     ".flow__features",
+    ".farmers__grid",
+    ".team__grid",
     ".clients__list",
     ".company__list",
     ".contact__cards",
@@ -63,7 +67,7 @@
   ];
   $$(targets.join(",")).forEach(el => {
     el.classList.add("reveal");
-    if (el.matches(".about__pillars, .flow__features, .clients__list, .contact__cards, .company__list")) {
+    if (el.matches(".about__pillars, .flow__features, .clients__list, .contact__cards, .company__list, .farmers__grid, .team__grid")) {
       el.classList.add("reveal-stagger");
     }
   });
