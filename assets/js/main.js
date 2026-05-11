@@ -54,6 +54,8 @@
     ".svc__body",
     ".flow__col",
     ".flow__features",
+    ".fleet__grid",
+    ".fleet__stats",
     ".farmers__grid",
     ".team__grid",
     ".clients__list",
@@ -67,7 +69,7 @@
   ];
   $$(targets.join(",")).forEach(el => {
     el.classList.add("reveal");
-    if (el.matches(".about__pillars, .flow__features, .clients__list, .contact__cards, .company__list, .farmers__grid, .team__grid")) {
+    if (el.matches(".about__pillars, .flow__features, .clients__list, .contact__cards, .company__list, .farmers__grid, .team__grid, .fleet__grid, .fleet__stats")) {
       el.classList.add("reveal-stagger");
     }
   });

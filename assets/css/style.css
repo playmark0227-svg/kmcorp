@@ -1026,6 +1026,113 @@ button { background: none; border: 0; cursor: pointer; font-family: inherit; col
   .flow__features { grid-template-columns: 1fr; gap: 16px; }
 }
 
+/* ----- Fleet ---------------------------------------------- */
+.fleet {
+  position: relative;
+  color: #fff;
+  overflow: hidden;
+  padding: 140px 0;
+}
+.fleet__bg { position: absolute; inset: 0; z-index: 0; }
+.fleet__bg-img {
+  position: absolute; inset: -5%;
+  background-size: cover; background-position: center;
+  filter: grayscale(28%) saturate(105%) brightness(85%);
+  animation: heroZoom 22s ease-in-out infinite alternate;
+}
+.fleet__bg-veil {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(120deg, rgba(8, 18, 41, 0.92) 0%, rgba(8, 18, 41, 0.7) 40%, rgba(11, 49, 98, 0.55) 100%),
+    radial-gradient(40% 60% at 90% 0%, rgba(242, 207, 120, 0.18), transparent 60%);
+}
+.fleet__inner { position: relative; z-index: 1; }
+
+.fleet__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-bottom: 56px;
+}
+.fleet__card {
+  position: relative;
+  padding: 36px 32px;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 14px;
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(4px);
+  transition: transform .4s var(--easing), background .4s var(--easing), border-color .4s var(--easing);
+}
+.fleet__card:hover {
+  transform: translateY(-6px);
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(242, 207, 120, 0.5);
+}
+.fleet__card-num {
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  color: #f2cf78;
+  font-weight: 700;
+}
+.fleet__card h3 {
+  font-family: var(--ff-jp-serif);
+  font-size: 22px;
+  font-weight: 600;
+  margin: 10px 0 12px;
+  letter-spacing: 0.06em;
+  color: #fff;
+}
+.fleet__card p {
+  font-size: 13.5px;
+  color: rgba(255,255,255,0.84);
+  line-height: 1.9;
+}
+
+.fleet__stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid rgba(255,255,255,0.22);
+  padding-top: 32px;
+}
+.fleet__stats li {
+  padding: 4px 14px;
+  border-right: 1px solid rgba(255,255,255,0.14);
+  display: flex; flex-direction: column;
+}
+.fleet__stats li:last-child { border-right: 0; }
+.fleet__stats em {
+  font-family: var(--ff-en);
+  font-style: normal;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 500;
+  line-height: 1;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+.fleet__stats em small {
+  font-size: 0.36em;
+  margin-left: 4px;
+  font-family: var(--ff-jp);
+  font-weight: 500;
+  color: #f2cf78;
+}
+.fleet__stats span {
+  margin-top: 10px;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: rgba(255,255,255,0.74);
+}
+
+@media (max-width: 900px) {
+  .fleet { padding: 100px 0; }
+  .fleet__grid { grid-template-columns: 1fr; gap: 14px; margin-bottom: 40px; }
+  .fleet__stats { grid-template-columns: repeat(2, 1fr); gap: 24px 0; }
+  .fleet__stats li { border-right: 0; }
+  .fleet__stats li:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.14); }
+}
+
 /* ----- Farmers -------------------------------------------- */
 .farmers {
   background: var(--c-bg);
