@@ -233,9 +233,9 @@ button { background: none; border: 0; cursor: pointer; font-family: inherit; col
 .hero__bg {
   position: absolute; inset: -3%;
   background-size: cover;
-  background-position: center;
-  filter: grayscale(15%) saturate(100%) brightness(72%);
-  animation: heroZoom 18s ease-in-out infinite alternate;
+  background-position: 60% 35%;
+  filter: saturate(112%) contrast(104%);
+  animation: heroZoom 26s ease-in-out infinite alternate;
 }
 @keyframes heroZoom {
   from { transform: scale(1.0); }
@@ -244,7 +244,12 @@ button { background: none; border: 0; cursor: pointer; font-family: inherit; col
 .hero__veil {
   position: absolute; inset: 0;
   background:
-    linear-gradient(110deg, rgba(13,16,21,0.86) 0%, rgba(13,16,21,0.45) 55%, rgba(13,16,21,0.6) 100%);
+    linear-gradient(98deg,
+      rgba(13,16,21,0.85) 0%,
+      rgba(13,16,21,0.55) 40%,
+      rgba(13,16,21,0.18) 70%,
+      rgba(13,16,21,0.32) 100%),
+    linear-gradient(180deg, rgba(13,16,21,0.0) 60%, rgba(13,16,21,0.55) 100%);
 }
 .hero__grain {
   position: absolute; inset: 0;
