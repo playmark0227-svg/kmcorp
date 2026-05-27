@@ -13,14 +13,20 @@
     setTimeout(() => loader.classList.add("is-hidden"), 700);
   });
 
-  /* ---- Header scroll state --------------------------- */
+  /* ---- Header scroll state + progress bar ------------ */
   const header = $("#header");
+  const progress = $("#scrollProgress > i");
   const onScroll = () => {
-    if (!header) return;
-    if (window.scrollY > 24) header.classList.add("is-scrolled");
-    else header.classList.remove("is-scrolled");
+    const sy = window.scrollY;
+    if (header) header.classList.toggle("is-scrolled", sy > 24);
+    if (progress) {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const ratio = max > 0 ? Math.min(sy / max, 1) : 0;
+      progress.style.transform = `scaleX(${ratio})`;
+    }
   };
   window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll, { passive: true });
   onScroll();
 
   /* ---- Hamburger menu -------------------------------- */
@@ -46,18 +52,15 @@
   /* ---- Reveal on scroll ------------------------------ */
   const targets = [
     ".section__head",
+    ".voice__head",
+    ".voice__statement",
     ".about__lead",
     ".about__pillars",
-    ".voice__media",
-    ".voice__body",
     ".svc__media",
     ".svc__body",
     ".flow__col",
     ".flow__features",
-    ".fleet__grid",
-    ".fleet__stats",
-    ".farmers__grid",
-    ".team__grid",
+    ".roles",
     ".clients__list",
     ".company__list",
     ".contact__cards",
@@ -69,7 +72,7 @@
   ];
   $$(targets.join(",")).forEach(el => {
     el.classList.add("reveal");
-    if (el.matches(".about__pillars, .flow__features, .clients__list, .contact__cards, .company__list, .farmers__grid, .team__grid, .fleet__grid, .fleet__stats")) {
+    if (el.matches(".about__pillars, .flow__features, .clients__list, .contact__cards, .company__list, .roles")) {
       el.classList.add("reveal-stagger");
     }
   });
