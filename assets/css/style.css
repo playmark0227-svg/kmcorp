@@ -3,6 +3,31 @@
    Direction: Industrial / Gothic / Logistics-confident
    ========================================================= */
 
+/* ----- Self-hosted, subsetted variable fonts -------------
+   Built from upstream OFL fonts via scripts/build-fonts.py.
+   No third-party font requests. */
+@font-face {
+  font-family: "Noto Sans JP";
+  src: url("../fonts/NotoSansJP-subset.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-subset.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../fonts/JetBrainsMono-subset.woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* Palette - friendly industrial: cream + charcoal + brand blue + signal orange + pop yellow */
   --c-bg:        #f4f1ea;

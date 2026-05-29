@@ -26,6 +26,7 @@ python3 -m http.server 8080
 ├── assets/
 │   ├── css/style.css       # スタイル一式
 │   ├── js/main.js          # ローダー・メニュー・Reveal・スクロールスパイ等
+│   ├── fonts/              # セルフホストのサブセット woff2（外部フォント不使用）
 │   └── img/
 │       ├── 01_05.jpg       # ヒーロー元画像（最適化のソース。配信はしない）
 │       ├── hero-1600.*     # ヒーロー（PC）WebP + JPGフォールバック
@@ -33,7 +34,9 @@ python3 -m http.server 8080
 │       ├── ogp.jpg         # SNSシェア用 OGP 画像（1200×630）
 │       └── favicon.svg     # ファビコン
 ├── scripts/
-│   └── optimize-images.mjs # 画像最適化スクリプト（sharp）
+│   ├── optimize-images.mjs # 画像最適化スクリプト（sharp）
+│   ├── fetch-font-src.sh   # サブセット元フォント（OFL）の取得
+│   └── build-fonts.py      # フォントのサブセット化（fonttools）
 ├── robots.txt / sitemap.xml
 ├── .nojekyll               # GitHub Pages の Jekyll 処理を無効化
 └── README.md
@@ -57,7 +60,7 @@ python3 -m http.server 8080
 ## Design
 
 - カラー: ブランドブルー (#0b3d91) ／ クリーム (#f4f1ea) ／ シグナルオレンジ (#ff5a1f) ／ ポップイエロー (#ffd93d) ／ チャコール (#14171c)
-- フォント: Noto Sans JP / Inter / JetBrains Mono
+- フォント: Noto Sans JP / Inter / JetBrains Mono（**セルフホスト・日本語サブセット化済み**）
 - モチーフ: 産業・物流的なナンバリング、和欧混植、余白とラインを活かした構成
 - 演出: ローダー、IntersectionObserver による Reveal、ヒーローのパララックス、マーキー、スクロール進捗バー、ナビのスクロールスパイ
 
@@ -72,9 +75,21 @@ node scripts/optimize-images.mjs
 
 WebP + JPGフォールバックのレスポンシブ画像と、1200×630 の OGP 画像を `assets/img/` に出力します。
 
+## フォントの再生成
+
+ページ内の実テキストから字形を集計し、各可変フォントを woff2 にサブセットしてセルフホストしています（可変軸 `wght` は保持）。Google Fonts への外部リクエストはありません。
+
+```bash
+pip install fonttools brotli   # 初回のみ
+bash scripts/fetch-font-src.sh # 元フォント(OFL)を /tmp に取得
+python3 scripts/build-fonts.py # assets/fonts/*.woff2 を生成
+```
+
+> 日本語コピーを大きく変更した場合は再生成してください。ひらがな・カタカナ・常用記号は安全マージンとして全字含めているため、軽微な編集ではフォールバックしません。
+
 ## パフォーマンス / SEO / アクセシビリティ
 
 - ヒーロー写真は WebP 化＋レスポンシブ配信で **604KB → 約57KB（PC, WebP）** に圧縮、`<link rel="preload">` で LCP を前倒し
-- Google Fonts は `preload` + 非ブロッキング読み込み（`noscript` フォールバックあり）
+- フォントはセルフホスト＋日本語サブセットで **Noto Sans JP 9.6MB → 約186KB**（3書体合計 約257KB）。外部フォントリクエストをゼロ化し、`font-display: swap` ＋ critical face を preload
 - Open Graph / Twitter Card / canonical / JSON-LD（Organization）構造化データを設定
 - スキップリンク、`:focus-visible` のキーボードフォーカス表示、`aria-current` 付きスクロールスパイ、`prefers-reduced-motion` 対応
