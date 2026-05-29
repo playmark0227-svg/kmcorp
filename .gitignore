@@ -1,0 +1,8 @@
+# Node — only needed locally to run scripts/optimize-images.mjs (npm install sharp)
+node_modules/
+package-lock.json
+package.json
+
+# OS / editor cruft
+.DS_Store
+*.log

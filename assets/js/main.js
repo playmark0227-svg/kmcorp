@@ -88,6 +88,28 @@
 
   $$(".reveal").forEach(el => io.observe(el));
 
+  /* ---- Scrollspy: active nav link -------------------- */
+  const navLinks = $$(".nav__list a");
+  const spyTargets = navLinks
+    .map(a => document.querySelector(a.getAttribute("href")))
+    .filter(Boolean);
+  if (spyTargets.length) {
+    const setActive = (id) => {
+      navLinks.forEach(a => {
+        const on = a.getAttribute("href") === id;
+        a.classList.toggle("is-active", on);
+        if (on) a.setAttribute("aria-current", "true");
+        else a.removeAttribute("aria-current");
+      });
+    };
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) setActive("#" + e.target.id);
+      });
+    }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+    spyTargets.forEach(s => spy.observe(s));
+  }
+
   /* ---- Smooth scroll for in-page anchors ------------- */
   $$('a[href^="#"]').forEach(a => {
     a.addEventListener("click", (e) => {
