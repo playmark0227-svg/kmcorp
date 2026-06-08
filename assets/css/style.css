@@ -828,13 +828,46 @@ button { background: none; border: 0; cursor: pointer; font-family: inherit; col
 }
 .svc__img {
   position: absolute; inset: 0;
-  background-size: cover;
-  background-position: center;
-  transform: scale(1.04);
-  transition: transform 1s var(--easing);
-  filter: saturate(95%);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  transform: scale(1.0);
+  transition: transform 1.2s var(--easing);
 }
-.svc:hover .svc__img { transform: scale(1.12); }
+.svc:hover .svc__img { transform: scale(1.04); }
+.svc__img::before {
+  content: ""; position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,0.16) 1.3px, transparent 1.3px);
+  background-size: 20px 20px;
+  opacity: 0.6;
+}
+.svc__icon {
+  position: relative; z-index: 1;
+  width: 32%; height: auto;
+  color: #fff;
+  fill: none; stroke: currentColor; stroke-width: 1.3;
+  stroke-linecap: round; stroke-linejoin: round;
+  opacity: 0.97;
+  filter: drop-shadow(0 8px 20px rgba(0,0,0,0.22));
+  transition: transform .6s var(--easing);
+}
+.svc:hover .svc__icon { transform: translateY(-4px) scale(1.05); }
+.svc__no {
+  position: absolute; right: 18px; bottom: 8px; z-index: 1;
+  font-family: var(--ff-en);
+  font-size: clamp(64px, 8vw, 116px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: rgba(255,255,255,0.15);
+}
+.svc__img--fresh { background: linear-gradient(140deg, #ff7a3d 0%, #d9420a 55%, #a8330a 100%); }
+.svc__img--vege  { background: linear-gradient(140deg, #ffd54a 0%, #ecab10 55%, #c8860a 100%); }
+.svc__img--match { background: linear-gradient(140deg, #2f74e6 0%, #1450b8 55%, #082a66 100%); }
+.svc__img--care  { background: linear-gradient(140deg, #3a4d6e 0%, #25324a 55%, #161b26 100%); }
+/* yellow panel needs dark marks for contrast */
+.svc__img--vege .svc__icon { color: var(--c-ink); }
+.svc__img--vege .svc__no { color: rgba(20,23,28,0.16); }
+.svc__img--vege::before { background-image: radial-gradient(rgba(20,23,28,0.14) 1.3px, transparent 1.3px); }
 .svc__media::after {
   content: "";
   position: absolute; inset: 0;
