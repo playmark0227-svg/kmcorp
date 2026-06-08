@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"systemMessage\":\"🌐 公開URL: https://playmark0227-svg.github.io/kmcorp/\"}'"
+          }
+        ]
+      }
+    ]
+  }
+}
