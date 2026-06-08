@@ -406,35 +406,44 @@
       <p class="section__desc">生鮮食品の直送便（Service 01）では、産地と納品先を、自社で一本につないでいます。中間業者を入れないことで、鮮度・価格・スピードの3つを両立できます。</p>
     </div>
 
-    <div class="flow__wrap">
-      <!-- 一般流通 -->
-      <div class="flow__col flow__col--general">
-        <div class="flow__head">
-          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M3 17V7h13v10M16 11h4l1 3v3h-5M7 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM18 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span>一般流通</span>
-        </div>
-        <ol class="flow__steps">
-          <li><span>STEP 01</span><em>生産者様</em></li>
-          <li class="flow__between"><span>仲卸 → 卸売 → 小売店</span><i></i></li>
-          <li><span>STEP 03</span><em>お客様</em></li>
-        </ol>
-        <p class="flow__note">複数の流通段階を経るため、鮮度低下とコスト増の要因に。</p>
+    <div class="flowmap">
+      <div class="flowmap__anchor flowmap__anchor--start">
+        <span class="flowmap__cap">生産者様</span>
+        <small>那須塩原の契約農家</small>
       </div>
 
-      <!-- KMコーポレーション -->
-      <div class="flow__col flow__col--km">
-        <div class="flow__head flow__head--km">
-          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 2l3 5 5 1-4 4 1 6-5-3-5 3 1-6-4-4 5-1z" fill="currentColor"/></svg>
-          <span>KMコーポレーション</span>
+      <div class="flowmap__lanes">
+        <div class="lane lane--general">
+          <span class="lane__tag">一般流通</span>
+          <ol class="lane__chain">
+            <li class="node">農協様</li>
+            <li class="node">卸売業者様</li>
+            <li class="node">仲卸業者様</li>
+            <li class="node">小売店様</li>
+          </ol>
         </div>
-        <ol class="flow__steps flow__steps--km">
-          <li><span>STEP 01</span><em>生産者様</em><small>那須塩原の契約農家</small></li>
-          <li class="flow__between flow__between--km"><span>収穫したてをそのままお届け</span><i></i></li>
-          <li><span>STEP 02</span><em>お客様</em><small>翌日着・低価格・高鮮度</small></li>
-        </ol>
-        <p class="flow__note flow__note--km">中間流通を省くことで、新鮮なまま、おどろきの価格で届けられる。</p>
+
+        <div class="lane lane--km">
+          <span class="lane__tag lane__tag--km">KMコーポレーション</span>
+          <ol class="lane__chain lane__chain--km">
+            <li class="node node--direct">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 7h11v8H3zM14 10h3.5l3.5 3v2h-7M7 18.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM17.5 18.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>収穫したてを<br>そのままお届け</span>
+            </li>
+            <li class="node node--km">小売店様</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="flowmap__anchor flowmap__anchor--goal">
+        <span class="flowmap__cap">お客様</span>
+        <small>翌日着・低価格・高鮮度</small>
       </div>
     </div>
+
+    <p class="flowmap__legend">
+      一般流通は <strong>農協・卸売・仲卸</strong> と多くの中間業者を経由します。KMコーポレーションは <strong>中間流通を省き、収穫したてを直送</strong>。だから、鮮度・価格・スピードを両立できます。
+    </p>
 
     <div class="flow__features">
       <div class="flow__feature">
