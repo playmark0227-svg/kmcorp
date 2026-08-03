@@ -25,7 +25,7 @@ python3 -m http.server 8080
 ├── index.html              # メインページ（1ページ完結）
 ├── assets/
 │   ├── css/style.css       # スタイル一式
-│   ├── js/main.js          # ローダー・メニュー・Reveal・スクロールスパイ等
+│   ├── js/main.js          # メニュー・Reveal・スクロールスパイ・進捗バー
 │   ├── fonts/              # セルフホストのサブセット woff2（外部フォント不使用）
 │   └── img/
 │       ├── 01_05.jpg       # ヒーロー元画像（最適化のソース。配信はしない）
@@ -44,25 +44,31 @@ python3 -m http.server 8080
 
 ## Sections
 
-1. **Hero** — 自社便とドライバーの写真をベースにしたフルスクリーンヒーロー
-2. **About** — 3つの軸（Direct / Multi / Trust）
-3. **Voice** — 代表メッセージ（マニフェスト型）
-4. **Business** — 4事業
-   - Service 01: 生鮮食品の直送便
-   - Service 02: 野菜・果物販売
-   - Service 03: 人材紹介・ビジネスマッチング支援
-   - Service 04: お墓お掃除代行サービス
-5. **Direct** — 中間流通を省いたダイレクト供給フロー
+- **Hero** — 左に見出し・右に自社便の写真を置いた分割構成（写真に暗幕をかけない）
+- **Trust strip** — ヒーロー直下に主要取引先を1行で提示
+1. **About** — 3つの軸（Direct / Multiple / Trust）
+2. **Business** — 4事業
+   - 01: 生鮮食品の直送便
+   - 02: 野菜・果物販売
+   - 03: 人材紹介・ビジネスマッチング支援
+   - 04: お墓お掃除代行サービス
+3. **Direct** — 一般流通（6ノード）と自社直送（4ノード）を並べた比較図
+4. **Clients** — JR東日本・イオン・セブン&アイ ほか
+5. **Message** — 代表メッセージ
 6. **Team** — 6つの役割（Roles）
-7. **Clients** — JR東日本・イオン・セブン&アイ ほか
-8. **Company / Contact**
+7. **Company** — 会社概要
+8. **Contact** — メール窓口・受付時間
 
 ## Design
 
-- カラー: ブランドブルー (#0b3d91) ／ クリーム (#f4f1ea) ／ シグナルオレンジ (#ff5a1f) ／ ポップイエロー (#ffd93d) ／ チャコール (#14171c)
+「運ぶ会社の誠実さ」。装飾を削ぎ、余白・階層・実績で信頼をつくる方向。
+
+- カラー: ネイビー (#0d2f63 / 企業の芯) ／ パイングリーン (#17624a / 産地の芯) ／ 白・温白 (#ffffff / #f6f5f1) ／ インク (#14181d)。アクセントは2色のみ
 - フォント: Noto Sans JP / Inter / JetBrains Mono（**セルフホスト・日本語サブセット化済み**）
-- モチーフ: 産業・物流的なナンバリング、和欧混植、余白とラインを活かした構成
-- 演出: ローダー、IntersectionObserver による Reveal、ヒーローのパララックス、マーキー、スクロール進捗バー、ナビのスクロールスパイ
+  - Inter・JetBrains Mono は CJK を持たないため、フォールバックに Noto Sans JP を挟んで和欧混在ラベルもシステムフォントに落ちないようにしている
+- 構成: 全セクション左端そろえ、ヘアラインと連番による編集的な階層づけ
+- 演出: IntersectionObserver による Reveal、スクロール進捗バー、ナビのスクロールスパイ。ヒーローは LCP のため意図的に非アニメーション
+- 撤去したもの: ローダー、マーキー、グレイン、パララックス、事業セクションのグラデーション板
 
 ## 画像の再生成
 
@@ -89,7 +95,9 @@ python3 scripts/build-fonts.py # assets/fonts/*.woff2 を生成
 
 ## パフォーマンス / SEO / アクセシビリティ
 
-- ヒーロー写真は WebP 化＋レスポンシブ配信で **604KB → 約57KB（PC, WebP）** に圧縮、`<link rel="preload">` で LCP を前倒し
-- フォントはセルフホスト＋日本語サブセットで **Noto Sans JP 9.6MB → 約186KB**（3書体合計 約257KB）。外部フォントリクエストをゼロ化し、`font-display: swap` ＋ critical face を preload
+- ヒーロー写真は WebP 化＋レスポンシブ配信で **604KB → 約57KB（PC, WebP）** に圧縮。`fetchpriority="high"` ＋ `aspect-ratio` による領域確保で LCP と CLS を両立
+- フォントはセルフホスト＋日本語サブセットで **Noto Sans JP 9.6MB → 約188KB**（3書体合計 約260KB）。外部フォントリクエストをゼロ化し、`font-display: swap` ＋ critical face を preload
 - Open Graph / Twitter Card / canonical / JSON-LD（Organization）構造化データを設定
-- スキップリンク、`:focus-visible` のキーボードフォーカス表示、`aria-current` 付きスクロールスパイ、`prefers-reduced-motion` 対応
+- スキップリンク、`:focus-visible` のキーボードフォーカス表示、`aria-current` 付きスクロールスパイ、`prefers-reduced-motion` 対応、Esc でメニューを閉じる
+- **本文テキストは全て WCAG AA（4.5:1、大文字は3:1）を満たすことを実測で確認済み**
+- 1440 / 1280 / 1100 / 900 / 820 / 390px で横スクロール発生なしを確認済み

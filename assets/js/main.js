@@ -1,143 +1,146 @@
 /* ======================================================
-   KM Corporation — Site Behaviors
+   KM Corporation — site behaviours
+   Progressive enhancement only: every feature here is a
+   nicety, and the page is fully usable without any of it.
    ====================================================== */
 
 (() => {
-  const $  = (s, r = document) => r.querySelector(s);
-  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  "use strict";
 
-  /* ---- Loader ---------------------------------------- */
-  window.addEventListener("load", () => {
-    const loader = $("#loader");
-    if (!loader) return;
-    setTimeout(() => loader.classList.add("is-hidden"), 700);
-  });
+  const $  = (sel, root = document) => root.querySelector(sel);
+  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
-  /* ---- Header scroll state + progress bar ------------ */
-  const header = $("#header");
-  const progress = $("#scrollProgress > i");
+  /* ---- Measure the scrollbar so --edge lands exactly on the
+          container's text edge (see :root in style.css). -------- */
+  const setScrollbarWidth = () => {
+    const w = window.innerWidth - document.documentElement.clientWidth;
+    document.documentElement.style.setProperty("--sbw", `${Math.max(w, 0)}px`);
+  };
+  setScrollbarWidth();
+  window.addEventListener("resize", setScrollbarWidth, { passive: true });
+
+  /* ---- Header state + scroll progress --------------------- */
+  const hdr = $("#hdr");
+  const progress = $("#progress");
+
   const onScroll = () => {
-    const sy = window.scrollY;
-    if (header) header.classList.toggle("is-scrolled", sy > 24);
+    const y = window.scrollY;
+    if (hdr) hdr.classList.toggle("is-stuck", y > 8);
     if (progress) {
       const max = document.documentElement.scrollHeight - window.innerHeight;
-      const ratio = max > 0 ? Math.min(sy / max, 1) : 0;
-      progress.style.transform = `scaleX(${ratio})`;
+      progress.style.transform = `scaleX(${max > 0 ? Math.min(y / max, 1) : 0})`;
     }
   };
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", onScroll, { passive: true });
   onScroll();
 
-  /* ---- Hamburger menu -------------------------------- */
-  const hamburger = $("#hamburger");
-  const nav = $(".nav");
-  if (hamburger && nav) {
-    hamburger.addEventListener("click", () => {
-      const open = nav.classList.toggle("is-open");
-      hamburger.classList.toggle("is-active", open);
-      hamburger.setAttribute("aria-expanded", String(open));
+  /* ---- Mobile menu ---------------------------------------- */
+  const burger = $("#burger");
+  const nav = $("#nav");
+
+  if (burger && nav) {
+    const setMenu = (open) => {
+      nav.classList.toggle("is-open", open);
+      burger.classList.toggle("is-open", open);
+      burger.setAttribute("aria-expanded", String(open));
+      burger.setAttribute("aria-label", open ? "メニューを閉じる" : "メニューを開く");
       document.body.style.overflow = open ? "hidden" : "";
-    });
-    $$(".nav__list a").forEach(a => {
-      a.addEventListener("click", () => {
-        nav.classList.remove("is-open");
-        hamburger.classList.remove("is-active");
-        hamburger.setAttribute("aria-expanded", "false");
-        document.body.style.overflow = "";
-      });
-    });
-  }
+    };
 
-  /* ---- Reveal on scroll ------------------------------ */
-  const targets = [
-    ".section__head",
-    ".voice__head",
-    ".voice__statement",
-    ".about__lead",
-    ".about__pillars",
-    ".svc__media",
-    ".svc__body",
-    ".flowmap",
-    ".flowmap__legend",
-    ".flow__features",
-    ".roles",
-    ".clients__list",
-    ".company__list",
-    ".contact__cards",
-    ".hero__title",
-    ".hero__lead",
-    ".hero__actions",
-    ".hero__meta",
-    ".hero__eyebrow",
-  ];
-  $$(targets.join(",")).forEach(el => {
-    el.classList.add("reveal");
-    if (el.matches(".about__pillars, .flow__features, .clients__list, .contact__cards, .company__list, .roles")) {
-      el.classList.add("reveal-stagger");
-    }
-  });
+    burger.addEventListener("click", () => setMenu(!nav.classList.contains("is-open")));
 
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        io.unobserve(entry.target);
+    // Any in-menu link closes it.
+    $$("a", nav).forEach((a) => a.addEventListener("click", () => setMenu(false)));
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && nav.classList.contains("is-open")) {
+        setMenu(false);
+        burger.focus();
       }
     });
-  }, { threshold: 0.12, rootMargin: "0px 0px -50px 0px" });
 
-  $$(".reveal").forEach(el => io.observe(el));
+    // Leaving the mobile breakpoint must not strand the page in a locked state.
+    const mq = window.matchMedia("(min-width: 1001px)");
+    const onBreakpoint = (e) => { if (e.matches) setMenu(false); };
+    mq.addEventListener("change", onBreakpoint);
+  }
 
-  /* ---- Scrollspy: active nav link -------------------- */
+  /* ---- Reveal on scroll ----------------------------------- */
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!reduceMotion && "IntersectionObserver" in window) {
+    const revealSelectors = [
+      ".sechead",
+      ".about__text",
+      ".pillars",
+      ".biz__item",
+      ".chart__row",
+      ".merits",
+      ".clist",
+      ".voice__quote",
+      ".roles",
+      ".spec",
+      ".contact__cards",
+    ];
+
+    const items = $$(revealSelectors.join(","));
+    items.forEach((el) => el.classList.add("reveal"));
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-in");
+          io.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    items.forEach((el) => io.observe(el));
+    // The hero is deliberately absent from the list: it is the LCP block, and
+    // fading it in after the deferred script parses would flash it away first.
+  }
+
+  /* ---- Scrollspy ------------------------------------------ */
   const navLinks = $$(".nav__list a");
-  const spyTargets = navLinks
-    .map(a => document.querySelector(a.getAttribute("href")))
+  const sections = navLinks
+    .map((a) => $(a.getAttribute("href")))
     .filter(Boolean);
-  if (spyTargets.length) {
-    const setActive = (id) => {
-      navLinks.forEach(a => {
-        const on = a.getAttribute("href") === id;
+
+  if (sections.length && "IntersectionObserver" in window) {
+    const visible = new Set();
+
+    const paint = () => {
+      // Whichever tracked section sits highest on screen wins.
+      const current = sections
+        .filter((s) => visible.has(s))
+        .sort((a, b) => a.getBoundingClientRect().top - b.getBoundingClientRect().top)[0];
+
+      navLinks.forEach((a) => {
+        const on = !!current && a.getAttribute("href") === `#${current.id}`;
         a.classList.toggle("is-active", on);
         if (on) a.setAttribute("aria-current", "true");
         else a.removeAttribute("aria-current");
       });
     };
-    const spy = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) setActive("#" + e.target.id);
-      });
-    }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
-    spyTargets.forEach(s => spy.observe(s));
+
+    const spy = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) visible.add(e.target);
+          else visible.delete(e.target);
+        });
+        paint();
+      },
+      { rootMargin: "-30% 0px -55% 0px", threshold: 0 }
+    );
+
+    sections.forEach((s) => spy.observe(s));
   }
 
-  /* ---- Smooth scroll for in-page anchors ------------- */
-  $$('a[href^="#"]').forEach(a => {
-    a.addEventListener("click", (e) => {
-      const id = a.getAttribute("href");
-      if (id.length <= 1) return;
-      const target = document.querySelector(id);
-      if (!target) return;
-      e.preventDefault();
-      const top = target.getBoundingClientRect().top + window.scrollY - 70;
-      window.scrollTo({ top, behavior: "smooth" });
-    });
-  });
-
-  /* ---- Year stamp ------------------------------------ */
-  const y = $("#year");
-  if (y) y.textContent = new Date().getFullYear();
-
-  /* ---- Subtle parallax on hero bg --------------------- */
-  const heroBg = $(".hero__bg");
-  if (heroBg) {
-    let raf = 0;
-    window.addEventListener("scroll", () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        const y = Math.min(window.scrollY * 0.18, 240);
-        heroBg.style.transform = `translateY(${y}px) scale(${1 + Math.min(window.scrollY / 4500, 0.06)})`;
-      });
-    }, { passive: true });
-  }
+  /* ---- Year stamp ----------------------------------------- */
+  const year = $("#year");
+  if (year) year.textContent = String(new Date().getFullYear());
 })();

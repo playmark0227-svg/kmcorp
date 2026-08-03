@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>株式会社KMコーポレーション ｜ 那須塩原から、新鮮をまっすぐに。</title>
 <meta name="description" content="株式会社KMコーポレーション｜栃木県・那須塩原の無農薬野菜・果実・お米の直送便、野菜果物販売、人材紹介・ビジネスマッチング支援、お墓お掃除代行サービス。暮らしと事業に必要な仕事を、自社の手で運びます。" />
-<meta name="theme-color" content="#0b3d91" />
+<meta name="theme-color" content="#0d2f63" />
 <meta name="format-detection" content="telephone=no" />
 <link rel="canonical" href="https://playmark0227-svg.github.io/kmcorp/" />
 
@@ -27,10 +27,6 @@
 <meta name="twitter:image" content="https://playmark0227-svg.github.io/kmcorp/assets/img/ogp.jpg" />
 
 <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
-
-<!-- Preload LCP hero image (responsive) -->
-<link rel="preload" as="image" href="assets/img/hero-1600.webp" type="image/webp" media="(min-width: 768px)" />
-<link rel="preload" as="image" href="assets/img/hero-960.webp" type="image/webp" media="(max-width: 767px)" />
 
 <!-- Self-hosted subsetted fonts — preload the critical faces -->
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/NotoSansJP-subset.woff2" crossorigin />
@@ -70,592 +66,420 @@
 
 <a href="#main" class="skip-link">本文へスキップ</a>
 
-<!-- Loader -->
-<div class="loader" id="loader" aria-hidden="true">
-  <div class="loader__inner">
-    <span class="loader__logo">KM</span>
-    <span class="loader__bar"><i></i></span>
-  </div>
-</div>
-
-<!-- Scroll progress -->
-<div class="scroll-progress" id="scrollProgress" aria-hidden="true"><i></i></div>
-
 <!-- Header -->
-<header class="header" id="header">
-  <div class="header__inner">
-    <a href="#top" class="brand" aria-label="株式会社KMコーポレーション">
-      <span class="brand__mark" aria-hidden="true">
-        <svg viewBox="0 0 48 48" width="36" height="36">
-          <defs>
-            <linearGradient id="bm" x1="0" x2="1" y1="0" y2="1">
-              <stop offset="0" stop-color="#0b3d91"/>
-              <stop offset="1" stop-color="#1e6dd8"/>
-            </linearGradient>
-          </defs>
-          <circle cx="24" cy="24" r="22" fill="url(#bm)"/>
-          <path d="M14 12h4v10.8l9-10.8h5l-9 10.7L33 36h-5l-7.4-11.4-2.6 3.1V36h-4z" fill="#fff"/>
+<header class="hdr" id="hdr">
+  <div class="hdr__bar">
+    <a href="#top" class="logo" aria-label="株式会社KMコーポレーション トップへ">
+      <span class="logo__mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48" width="34" height="34" focusable="false">
+          <rect width="48" height="48" rx="7" fill="currentColor"/>
+          <path d="M13 12.5h4.2v11L26.6 12.5h5.2l-9.3 11.1L32.6 35.5h-5.2l-7.7-11.8-2.5 3v8.8H13z" fill="#fff"/>
         </svg>
       </span>
-      <span class="brand__text">
+      <span class="logo__text">
         <em>KM Corporation</em>
         <small>株式会社KMコーポレーション</small>
       </span>
     </a>
 
-    <nav class="nav" aria-label="メインナビゲーション">
+    <nav class="nav" id="nav" aria-label="メインナビゲーション">
       <ul class="nav__list">
-        <li><a href="#about"><i>01</i><span>About</span></a></li>
-        <li><a href="#voice"><i>02</i><span>Voice</span></a></li>
-        <li><a href="#services"><i>03</i><span>Business</span></a></li>
-        <li><a href="#flow"><i>04</i><span>Direct</span></a></li>
-        <li><a href="#team"><i>05</i><span>Team</span></a></li>
-        <li><a href="#clients"><i>06</i><span>Clients</span></a></li>
-        <li><a href="#company"><i>07</i><span>Company</span></a></li>
-        <li><a href="#contact"><i>08</i><span>Contact</span></a></li>
+        <li><a href="#about">会社について</a></li>
+        <li><a href="#business">事業内容</a></li>
+        <li><a href="#direct">直送のしくみ</a></li>
+        <li><a href="#clients">取引実績</a></li>
+        <li><a href="#company">会社概要</a></li>
       </ul>
+      <a href="#contact" class="nav__cta">お問い合わせ</a>
     </nav>
 
-    <a href="#contact" class="header__cta">
-      <span>お問い合わせ</span>
-      <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <a href="#contact" class="hdr__cta">
+      お問い合わせ
+      <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M5 12h13M12 5.5l6.5 6.5-6.5 6.5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
 
-    <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false">
-      <span></span><span></span><span></span>
+    <button class="burger" id="burger" aria-label="メニューを開く" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span>
     </button>
   </div>
+  <div class="hdr__progress" aria-hidden="true"><i id="progress"></i></div>
 </header>
 
 <main id="main">
 
-<!-- Hero -->
+<!-- ============ Hero ============ -->
 <section class="hero" id="top">
-  <div class="hero__media" aria-hidden="true">
-    <div class="hero__bg"></div>
-    <div class="hero__veil"></div>
-    <div class="hero__grain"></div>
-  </div>
-
-  <div class="hero__inner">
-    <div class="hero__eyebrow">
-      <span class="dot"></span>
-      <span>KM Corporation — Tochigi, Japan</span>
-    </div>
+  <div class="hero__copy">
+    <p class="hero__eyebrow">
+      <span class="hero__eyebrow-rule" aria-hidden="true"></span>
+      栃木県 那須塩原
+    </p>
 
     <h1 class="hero__title">
-      <span class="hero__title-row">届ける、</span>
-      <span class="hero__title-row"><em>つなぐ</em>、整える。</span>
+      届ける、<em>つなぐ</em>、<br />整える。
     </h1>
 
     <p class="hero__lead">
-      株式会社KMコーポレーションは、生鮮食品の直送、野菜・果物販売、人材紹介・ビジネスマッチング、お墓のお掃除代行——
+      生鮮食品の直送、野菜・果物の販売、人材紹介・ビジネスマッチング、お墓のお掃除代行。<br class="br-lg" />
       暮らしと事業に必要な仕事を、自社の手で運ぶ会社です。
     </p>
 
     <div class="hero__actions">
-      <a href="#services" class="btn btn--primary">
-        <span>事業を見る</span>
-        <svg viewBox="0 0 24 24" width="16" height="16"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <a href="#business" class="btn btn--fill">
+        事業内容を見る
+        <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M5 12h13M12 5.5l6.5 6.5-6.5 6.5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
-      <a href="#contact" class="btn btn--ghost">
-        <span>お問い合わせ</span>
-      </a>
+      <a href="#contact" class="btn btn--line">お問い合わせ</a>
     </div>
 
-    <div class="hero__meta">
-      <div class="hero__meta-item">
-        <em>4<small>事業</small></em>
-        <span>Business lines</span>
+    <dl class="hero__stats">
+      <div>
+        <dt>事業領域</dt>
+        <dd><b>4</b><span>領域</span></dd>
       </div>
-      <div class="hero__meta-item">
-        <em>200<small>+</small></em>
-        <span>Partner companies</span>
+      <div>
+        <dt>マッチング登録</dt>
+        <dd><b>200</b><span>社以上</span></dd>
       </div>
-      <div class="hero__meta-item">
-        <em>全国<small></small></em>
-        <span>Nationwide reach</span>
+      <div>
+        <dt>産地からのお届け</dt>
+        <dd><span>最短</span><b>翌日</b></dd>
       </div>
-    </div>
-
-    <a href="#about" class="hero__scroll" aria-label="次のセクションへ">
-      <span>SCROLL</span>
-      <i></i>
-    </a>
+    </dl>
   </div>
 
-  <div class="hero__marquee" aria-hidden="true">
-    <div class="marquee__track">
-      <span>＋ KM Corporation</span>
-      <span>＋ Fresh Direct</span>
-      <span>＋ 野菜・果物販売</span>
-      <span>＋ Business Matching</span>
-      <span>＋ お墓お掃除代行</span>
-      <span>＋ Tochigi, Japan</span>
-      <span>＋ KM Corporation</span>
-      <span>＋ Fresh Direct</span>
-      <span>＋ 野菜・果物販売</span>
-      <span>＋ Business Matching</span>
-      <span>＋ お墓お掃除代行</span>
-      <span>＋ Tochigi, Japan</span>
-    </div>
+  <div class="hero__figure">
+    <picture>
+      <source
+        type="image/webp"
+        srcset="assets/img/hero-960.webp 960w, assets/img/hero-1600.webp 1478w"
+        sizes="(min-width: 1000px) 50vw, 100vw" />
+      <img
+        src="assets/img/hero-1600.jpg"
+        srcset="assets/img/hero-960.jpg 960w, assets/img/hero-1600.jpg 1478w"
+        sizes="(min-width: 1000px) 50vw, 100vw"
+        width="1478" height="892"
+        fetchpriority="high" decoding="async"
+        alt="軽バンの運転席から笑顔でサムズアップするKMコーポレーションの配送スタッフ" />
+    </picture>
+    <p class="hero__caption"><span>自社便で、産地から食卓まで。</span></p>
   </div>
 </section>
 
-<!-- About -->
-<section class="about section" id="about">
-  <div class="container">
-    <div class="section__head">
-      <span class="section__num">ABOUT — 01</span>
-      <p class="section__eyebrow">About</p>
-      <h2 class="section__title">
-        <span>暮らしと事業に、</span>
-        <span class="accent">必要な仕事を。</span>
-      </h2>
-    </div>
+<!-- ============ Trust strip ============ -->
+<section class="trust" aria-label="主なお取引先">
+  <div class="wrap trust__inner">
+    <p class="trust__label">主なお取引先</p>
+    <ul class="trust__list">
+      <li>東日本旅客鉄道株式会社</li>
+      <li>イオン株式会社</li>
+      <li>株式会社セブン&amp;アイ・ホールディングス</li>
+    </ul>
+    <a href="#clients" class="trust__more">すべて見る<svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><path d="M5 12h13M12 5.5l6.5 6.5-6.5 6.5" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </div>
+</section>
+
+<!-- ============ About ============ -->
+<section class="sec about" id="about">
+  <div class="wrap">
+    <header class="sechead">
+      <p class="sechead__idx"><span>01</span> About</p>
+      <h2 class="sechead__title">暮らしと事業に、<br />必要な仕事を。</h2>
+    </header>
 
     <div class="about__grid">
-      <div class="about__lead">
-        <p>
-          株式会社KMコーポレーションは、栃木県・那須塩原を拠点とする会社です。
-          生鮮食品の直送、野菜・果物の販売、企業同士をつなぐ人材紹介・ビジネスマッチング、そして、お墓のお掃除代行。
-          4つの事業を通じて、暮らしと事業に必要な仕事を、自社で引き受けています。
+      <div class="about__text">
+        <p class="about__lede">
+          株式会社KMコーポレーションは、栃木県・那須塩原を拠点とする会社です。生鮮食品の直送、野菜・果物の販売、企業同士をつなぐ人材紹介・ビジネスマッチング、そして、お墓のお掃除代行。4つの事業を通じて、暮らしと事業に必要な仕事を、自社で引き受けています。
         </p>
         <p>
-          一見ばらばらに見える事業も、私たちの中では一本でつながっています。
-          <strong>自分たちの手で運び、自分たちで届ける</strong>こと。
-          それを積み重ねることで、地域とお客様の双方に必要とされる会社でありたいと考えています。
+          一見ばらばらに見える事業も、私たちの中では一本でつながっています。<strong>自分たちの手で運び、自分たちで届ける</strong>こと。それを積み重ねることで、地域とお客様の双方に必要とされる会社でありたいと考えています。
         </p>
       </div>
 
-      <ul class="about__pillars">
-        <li>
-          <span class="pillar__index">01</span>
-          <div>
-            <h3>DIRECT</h3>
-            <p>自社で運び、自社で届ける。仲卸や仲介に頼らない、シンプルなやり方。</p>
-          </div>
+      <ul class="pillars">
+        <li class="pillar">
+          <p class="pillar__en">Direct</p>
+          <h3 class="pillar__title">自社で運び、自社で届ける</h3>
+          <p class="pillar__body">仲卸や仲介に頼らない、シンプルなやり方。だから鮮度も価格も、私たちの責任で守れます。</p>
         </li>
-        <li>
-          <span class="pillar__index">02</span>
-          <div>
-            <h3>MULTI</h3>
-            <p>食品・販売・人材・暮らし。4つの事業で、ご縁の幅をひろげる。</p>
-          </div>
+        <li class="pillar">
+          <p class="pillar__en">Multiple</p>
+          <h3 class="pillar__title">4つの事業で、ご縁を広げる</h3>
+          <p class="pillar__body">食品・販売・人材・暮らし。領域をまたぐからこそ、お応えできるご相談があります。</p>
         </li>
-        <li>
-          <span class="pillar__index">03</span>
-          <div>
-            <h3>TRUST</h3>
-            <p>JR東日本・イオン・セブン&アイなど、信頼の取引実績。</p>
-          </div>
+        <li class="pillar">
+          <p class="pillar__en">Trust</p>
+          <h3 class="pillar__title">積み重ねてきた、お取引</h3>
+          <p class="pillar__body">JR東日本、イオン、セブン&amp;アイ。大手流通との継続したお取引が、仕事の証明です。</p>
         </li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- Voice -->
-<section class="voice section" id="voice">
-  <div class="container">
-    <header class="voice__head">
-      <span class="section__num">VOICE — 02</span>
-      <p class="section__eyebrow">Representative</p>
+<!-- ============ Business ============ -->
+<section class="sec sec--alt business" id="business">
+  <div class="wrap">
+    <header class="sechead">
+      <p class="sechead__idx"><span>02</span> Business</p>
+      <h2 class="sechead__title">私たちの、4つの仕事。</h2>
+      <p class="sechead__desc">産地から食卓まで運ぶ仕事も、企業と企業をつなぐ仕事も、ご先祖様のお墓を整える仕事も。誰かに頼まれて、誰かのために動くという点で、私たちの中では同じ仕事です。</p>
     </header>
 
-    <blockquote class="voice__statement">
-      <span class="voice__mark" aria-hidden="true">&ldquo;</span>
-      <h2 class="voice__title">
-        <span>頼まれた仕事を、</span>
-        <span class="voice__title-accent">ていねいに。</span>
-      </h2>
-
-      <div class="voice__body">
-        <p>
-          生鮮食品の直送も、野菜・果物の販売も、企業さん同士をつなぐ仕事も、お墓のお掃除も。
-          ジャンルはちがっても、<strong>誰かに頼まれて、誰かのために動く</strong>という仕事の本質は同じだと思っています。
-        </p>
-        <p>
-          KMコーポレーションは、那須塩原を拠点に、暮らしと事業のあいだに必要な仕事を引き受ける会社です。
-          ご相談をいただいたお仕事を、ひとつずつ、ていねいに。これからもそうやって続けていきます。
-        </p>
-      </div>
-
-      <footer class="voice__sign">
-        <em>KM Corporation Representative</em>
-        <strong>株式会社KMコーポレーション 代表</strong>
-      </footer>
-    </blockquote>
-  </div>
-</section>
-
-<!-- Services -->
-<section class="services section" id="services">
-  <div class="services__bg" aria-hidden="true"></div>
-
-  <div class="container">
-    <div class="section__head section__head--light">
-      <span class="section__num">BUSINESS — 03</span>
-      <p class="section__eyebrow">Business</p>
-      <h2 class="section__title">
-        <span>私たちの</span>
-        <span class="accent">4つの仕事。</span>
-      </h2>
-    </div>
-
-    <!-- Service 01 -->
-    <article class="svc" id="svc-direct">
-      <div class="svc__media">
-        <div class="svc__img svc__img--fresh">
-          <svg class="svc__icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 21V11"/>
-            <path d="M12 12c0-3.3 2.7-6 6-6 0 3.3-2.7 6-6 6z"/>
-            <path d="M12 15c0-2.8-2.2-5-5-5 0 2.8 2.2 5 5 5z"/>
-          </svg>
-          <span class="svc__no" aria-hidden="true">01</span>
+    <ol class="biz">
+      <!-- 01 -->
+      <li class="biz__item">
+        <div class="biz__head">
+          <p class="biz__no">01</p>
+          <div>
+            <p class="biz__en">Fresh Direct</p>
+            <h3 class="biz__title">生鮮食品の直送便</h3>
+          </div>
         </div>
-        <span class="svc__tag">SVC.01 / FRESH</span>
-      </div>
-      <div class="svc__body">
-        <p class="svc__en">SERVICE 01 — FRESH DIRECT</p>
-        <h3 class="svc__title">生鮮食品の直送便</h3>
-        <p class="svc__desc">
-          那須塩原の無農薬野菜、果実、お米をお届けしています。前日の収穫のお手伝いから、
-          収穫・納品まで全て自社で行うため、翌日には新鮮なまま、低価格で提供することが可能です。
-        </p>
-        <ul class="svc__list">
-          <li><span>那須の高原野菜</span><em>標高差・寒暖差で、みずみずしい味わい</em></li>
-          <li><span>季節の果実</span><em>旬を逃さず、収穫したてをお届け</em></li>
-          <li><span>那須塩原のお米</span><em>豊かな土壌と清流が育む一粒</em></li>
-        </ul>
-      </div>
-    </article>
-
-    <!-- Service 02 -->
-    <article class="svc svc--reverse" id="svc-vege">
-      <div class="svc__media">
-        <div class="svc__img svc__img--vege">
-          <svg class="svc__icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 8.5c-1.2-1.6-3.2-2.3-5-1.3C4.6 8.6 4 11.7 5.5 15c1 2.2 2.8 4 4.5 4 1 0 1.2-.6 2-.6s1 .6 2 .6c1.7 0 3.5-1.8 4.5-4 1.5-3.3.9-6.4-1.5-7.8-1.8-1-3.8-.3-5 1.3z"/>
-            <path d="M12 8.5c0-2 1.4-3.6 3.6-3.9"/>
-          </svg>
-          <span class="svc__no" aria-hidden="true">02</span>
+        <div class="biz__body">
+          <p class="biz__desc">
+            那須塩原の無農薬野菜、果実、お米をお届けしています。前日の収穫のお手伝いから、収穫・納品まで全て自社で行うため、翌日には新鮮なまま、低価格で提供することが可能です。
+          </p>
+          <ul class="biz__points">
+            <li><b>那須の高原野菜</b><span>標高差・寒暖差が育てる、みずみずしい味わい</span></li>
+            <li><b>季節の果実</b><span>旬を逃さず、収穫したてをそのままお届け</span></li>
+            <li><b>那須塩原のお米</b><span>豊かな土壌と清流が育む一粒</span></li>
+          </ul>
         </div>
-        <span class="svc__tag">SVC.02 / VEGE</span>
-      </div>
-      <div class="svc__body">
-        <p class="svc__en">SERVICE 02 — VEGETABLE &amp; FRUIT</p>
-        <h3 class="svc__title">野菜・果物販売</h3>
-        <p class="svc__desc">
-          日頃から取引している農家さんの地域活性化を目指して、自社での販売を拡大強化しております。
-          自社便にて商品を直送・販売までしておりますので、低価格で販売することが可能です。
-          季節ごとに販売種類は変わりますので、お気軽にご相談くださいませ。
-        </p>
-        <ul class="svc__list">
-          <li><span>イベント出店</span><em>京都物産展・定期マルシェなど</em></li>
-          <li><span>法人卸売</span><em>大手流通グループとの安定取引</em></li>
-          <li><span>季節商品</span><em>旬に合わせた季節商品をご提案</em></li>
-        </ul>
-      </div>
-    </article>
-
-    <!-- Service 03 -->
-    <article class="svc" id="svc-match">
-      <div class="svc__media">
-        <div class="svc__img svc__img--match">
-          <svg class="svc__icon" viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="6" cy="7" r="2.4"/>
-            <circle cx="18" cy="7" r="2.4"/>
-            <circle cx="12" cy="17" r="2.4"/>
-            <path d="M8.1 8.6l2.8 6.2M15.9 8.6l-2.8 6.2M8.4 7h7.2"/>
-          </svg>
-          <span class="svc__no" aria-hidden="true">03</span>
-        </div>
-        <span class="svc__tag">SVC.03 / MATCH</span>
-      </div>
-      <div class="svc__body">
-        <p class="svc__en">SERVICE 03 — BUSINESS MATCHING</p>
-        <h3 class="svc__title">人材紹介・ビジネスマッチング支援</h3>
-        <p class="svc__desc">
-          企業ニーズに最適なビジネス交流会を、月一度全国にて開催しております。
-          販路開拓・アウトソーシング・経営課題の解決・オープン・イノベーションなど、ビジネスマッチングの場を運営しています。
-        </p>
-        <ul class="svc__tags">
-          <li>販路開拓</li>
-          <li>アウトソーシング開拓</li>
-          <li>経営課題解決</li>
-          <li>オープン・イノベーション</li>
-        </ul>
-        <p class="svc__badge"><em>登録社数</em><strong>200<small>社以上</small></strong></p>
-      </div>
-    </article>
-
-    <!-- Service 04 -->
-    <article class="svc svc--reverse" id="svc-grave">
-      <div class="svc__media">
-        <div class="svc__img svc__img--care">
-          <svg class="svc__icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 3.5c.5 3.8 1.7 5 5.5 5.5-3.8.5-5 1.7-5.5 5.5-.5-3.8-1.7-5-5.5-5.5 3.8-.5 5-1.7 5.5-5.5z"/>
-            <path d="M18.5 13c.2 1.9.8 2.5 2.7 2.7-1.9.2-2.5.8-2.7 2.7-.2-1.9-.8-2.5-2.7-2.7 1.9-.2 2.5-.8 2.7-2.7z"/>
-          </svg>
-          <span class="svc__no" aria-hidden="true">04</span>
-        </div>
-        <span class="svc__tag">SVC.04 / CARE</span>
-      </div>
-      <div class="svc__body">
-        <p class="svc__en">SERVICE 04 — GRAVE CARE</p>
-        <h3 class="svc__title">お墓お掃除代行サービス</h3>
-        <p class="svc__desc">
-          遠方に住んでいるため頻繁にお参りできない…。お仕事が忙しく時間がとれない…。
-          お身体のお悩みから十分に掃除ができない…。
-          様々な理由からお墓のお手入れでお困りの方に代わり、こころを込めて丁寧にお掃除させていただきます。
-        </p>
-        <ul class="svc__list">
-          <li><span>洗浄・清掃</span><em>墓石・周辺・花筒まで丁寧に</em></li>
-          <li><span>お参り代行</span><em>お花・お線香もこころを込めて</em></li>
-          <li><span>写真報告</span><em>作業前後の写真でご報告</em></li>
-        </ul>
-      </div>
-    </article>
-  </div>
-</section>
-
-<!-- Flow -->
-<section class="flow section" id="flow">
-  <div class="container">
-    <div class="section__head">
-      <span class="section__num">DIRECT — 04</span>
-      <p class="section__eyebrow">Direct Supply</p>
-      <h2 class="section__title">
-        <span>仲卸も、卸も、</span>
-        <span class="accent">介さない。</span>
-      </h2>
-      <p class="section__desc">生鮮食品の直送便（Service 01）では、産地と納品先を、自社で一本につないでいます。中間業者を入れないことで、鮮度・価格・スピードの3つを両立できます。</p>
-    </div>
-
-    <div class="flowmap">
-      <div class="flowmap__anchor flowmap__anchor--start">
-        <span class="flowmap__cap">生産者様</span>
-        <small>那須塩原の契約農家</small>
-      </div>
-
-      <div class="flowmap__lanes">
-        <div class="lane lane--general">
-          <span class="lane__tag">一般流通</span>
-          <ol class="lane__chain">
-            <li class="node">農協様</li>
-            <li class="node">卸売業者様</li>
-            <li class="node">仲卸業者様</li>
-            <li class="node">小売店様</li>
-          </ol>
-        </div>
-
-        <div class="lane lane--km">
-          <span class="lane__tag lane__tag--km">KMコーポレーション</span>
-          <ol class="lane__chain lane__chain--km">
-            <li class="node node--direct">
-              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 7h11v8H3zM14 10h3.5l3.5 3v2h-7M7 18.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM17.5 18.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span>収穫したてを<br>そのままお届け</span>
-            </li>
-            <li class="node node--km">小売店様</li>
-          </ol>
-        </div>
-      </div>
-
-      <div class="flowmap__anchor flowmap__anchor--goal">
-        <span class="flowmap__cap">お客様</span>
-        <small>翌日着・低価格・高鮮度</small>
-      </div>
-    </div>
-
-    <p class="flowmap__legend">
-      一般流通は <strong>農協・卸売・仲卸</strong> と多くの中間業者を経由します。KMコーポレーションは <strong>中間流通を省き、収穫したてを直送</strong>。だから、鮮度・価格・スピードを両立できます。
-    </p>
-
-    <div class="flow__features">
-      <div class="flow__feature">
-        <span>01</span>
-        <h4>翌日着の鮮度</h4>
-        <p>収穫から最短翌日でお届け。畑のおいしさを、そのまま食卓に。</p>
-      </div>
-      <div class="flow__feature">
-        <span>02</span>
-        <h4>無農薬・高原野菜</h4>
-        <p>標高差と寒暖差。豊かな土壌で育つ、みずみずしい一品。</p>
-      </div>
-      <div class="flow__feature">
-        <span>03</span>
-        <h4>低価格を実現</h4>
-        <p>中間マージンを徹底カット。生産者にも、お客様にも、うれしい価格を。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Team -->
-<section class="team section" id="team">
-  <div class="team__bg" aria-hidden="true"></div>
-  <div class="container">
-    <div class="section__head section__head--light">
-      <span class="section__num">TEAM — 05</span>
-      <p class="section__eyebrow">Our Team</p>
-      <h2 class="section__title">
-        <span>4つの仕事を、</span>
-        <span class="accent">支える人たち。</span>
-      </h2>
-      <p class="section__desc">配送、販売、現場、マッチング、受付、統括——役割は違っても、ひとつの会社のメンバーとして、それぞれの仕事に取り組んでいます。</p>
-    </div>
-
-    <ol class="roles">
-      <li class="role">
-        <span class="role__num">01</span>
-        <div class="role__head">
-          <em>Delivery</em>
-          <small>配送 / 直送便</small>
-        </div>
-        <p>那須塩原から首都圏まで、自社便を運行。生鮮品を翌日に届ける役割。</p>
       </li>
-      <li class="role">
-        <span class="role__num">02</span>
-        <div class="role__head">
-          <em>Sales</em>
-          <small>販売</small>
+
+      <!-- 02 -->
+      <li class="biz__item">
+        <div class="biz__head">
+          <p class="biz__no">02</p>
+          <div>
+            <p class="biz__en">Vegetable &amp; Fruit</p>
+            <h3 class="biz__title">野菜・果物販売</h3>
+          </div>
         </div>
-        <p>大手取引先への卸売、物産展・マルシェなど、販売現場を引き受ける役割。</p>
+        <div class="biz__body">
+          <p class="biz__desc">
+            日頃から取引している農家さんの地域活性化を目指して、自社での販売を拡大強化しております。自社便にて商品を直送・販売までしておりますので、低価格で販売することが可能です。季節ごとに販売種類は変わりますので、お気軽にご相談くださいませ。
+          </p>
+          <ul class="biz__points">
+            <li><b>イベント出店</b><span>京都物産展・定期マルシェなどに出店</span></li>
+            <li><b>法人卸売</b><span>大手流通グループとの安定したお取引</span></li>
+            <li><b>季節商品</b><span>旬に合わせた品目をご提案</span></li>
+          </ul>
+        </div>
       </li>
-      <li class="role">
-        <span class="role__num">03</span>
-        <div class="role__head">
-          <em>Field</em>
-          <small>現場</small>
+
+      <!-- 03 -->
+      <li class="biz__item">
+        <div class="biz__head">
+          <p class="biz__no">03</p>
+          <div>
+            <p class="biz__en">Business Matching</p>
+            <h3 class="biz__title">人材紹介・<wbr />ビジネスマッチング支援</h3>
+          </div>
         </div>
-        <p>農家さんとの連携、お墓清掃の現場立ち合いまで、外回りの仕事を担う役割。</p>
+        <div class="biz__body">
+          <p class="biz__desc">
+            企業ニーズに最適なビジネス交流会を、月一度全国にて開催しております。販路開拓・アウトソーシング・経営課題の解決・オープンイノベーションなど、企業と企業が出会うための場を運営しています。
+          </p>
+          <ul class="chips">
+            <li>販路開拓</li>
+            <li>アウトソーシング開拓</li>
+            <li>経営課題の解決</li>
+            <li>オープンイノベーション</li>
+          </ul>
+          <p class="biz__stat"><span>登録社数</span><b>200</b><em>社以上</em></p>
+        </div>
       </li>
-      <li class="role">
-        <span class="role__num">04</span>
-        <div class="role__head">
-          <em>Matching</em>
-          <small>マッチング</small>
+
+      <!-- 04 -->
+      <li class="biz__item">
+        <div class="biz__head">
+          <p class="biz__no">04</p>
+          <div>
+            <p class="biz__en">Grave Care</p>
+            <h3 class="biz__title">お墓お掃除<wbr />代行サービス</h3>
+          </div>
         </div>
-        <p>月一度の交流会を設計・運営。200社を超える登録企業の縁を結ぶコーディネート。</p>
-      </li>
-      <li class="role">
-        <span class="role__num">05</span>
-        <div class="role__head">
-          <em>Customer Care</em>
-          <small>受付</small>
+        <div class="biz__body">
+          <p class="biz__desc">
+            遠方に住んでいるため頻繁にお参りできない。お仕事が忙しく時間がとれない。お身体のお悩みから十分に掃除ができない。様々な理由からお墓のお手入れでお困りの方に代わり、こころを込めて丁寧にお掃除させていただきます。
+          </p>
+          <ul class="biz__points">
+            <li><b>洗浄・清掃</b><span>墓石・周辺・花筒まで丁寧に</span></li>
+            <li><b>お参り代行</b><span>お花・お線香もこころを込めて</span></li>
+            <li><b>写真報告</b><span>作業前後のお写真でご報告</span></li>
+          </ul>
         </div>
-        <p>ご注文・お問い合わせの窓口。ご相談を整理し、社内へつないでいく役割。</p>
-      </li>
-      <li class="role">
-        <span class="role__num">06</span>
-        <div class="role__head">
-          <em>Director</em>
-          <small>統括</small>
-        </div>
-        <p>4事業の全体統括。取引先・地域との関係づくりまで担う、会社のまとめ役。</p>
       </li>
     </ol>
   </div>
 </section>
 
-<!-- Clients -->
-<section class="clients section" id="clients">
-  <div class="container">
-    <div class="section__head">
-      <span class="section__num">CLIENTS — 06</span>
-      <p class="section__eyebrow">Major Clients</p>
-      <h2 class="section__title">
-        <span>主な販売先・</span>
-        <span class="accent">お取引先。</span>
-      </h2>
+<!-- ============ Direct ============ -->
+<section class="sec sec--dark direct" id="direct">
+  <div class="wrap">
+    <header class="sechead sechead--light">
+      <p class="sechead__idx"><span>03</span> Direct Supply</p>
+      <h2 class="sechead__title">仲卸も、卸も、介さない。</h2>
+      <p class="sechead__desc">生鮮食品の直送便では、産地と納品先を自社で一本につないでいます。中間業者を入れないことで、鮮度・価格・スピードの3つを両立できます。</p>
+    </header>
+
+    <div class="chart">
+      <div class="chart__row">
+        <p class="chart__label">一般的な流通</p>
+        <ol class="chain">
+          <li class="chain__node">生産者様</li>
+          <li class="chain__node">農協様</li>
+          <li class="chain__node">卸売業者様</li>
+          <li class="chain__node">仲卸業者様</li>
+          <li class="chain__node">小売店様</li>
+          <li class="chain__node chain__node--end">お客様</li>
+        </ol>
+        <p class="chart__note">経由する事業者が多く、そのぶん時間とコストが積み上がります。</p>
+      </div>
+
+      <div class="chart__row chart__row--km">
+        <p class="chart__label chart__label--km">KMコーポレーション</p>
+        <ol class="chain chain--km">
+          <li class="chain__node">生産者様</li>
+          <li class="chain__node chain__node--truck">
+            <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M3 7.5h11v8.5H3zM14 10.5h3.6l3.4 3v2.5h-7M7 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM17.6 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            自社便で直送
+          </li>
+          <li class="chain__node">小売店様</li>
+          <li class="chain__node chain__node--end">お客様</li>
+        </ol>
+        <p class="chart__note">収穫したてを、そのまま。だから翌日着・低価格・高鮮度が両立します。</p>
+      </div>
     </div>
 
-    <ul class="clients__list">
+    <ul class="merits">
       <li>
-        <span class="clients__num">01</span>
-        <em>東日本旅客鉄道株式会社</em>
-        <small>JR East</small>
+        <p class="merits__no">01</p>
+        <h3>翌日着の鮮度</h3>
+        <p>収穫から最短翌日でお届け。畑のおいしさを、そのまま食卓に。</p>
       </li>
       <li>
-        <span class="clients__num">02</span>
-        <em>イオン株式会社</em>
-        <small>AEON Co., Ltd.</small>
+        <p class="merits__no">02</p>
+        <h3>無農薬・高原野菜</h3>
+        <p>標高差と寒暖差、豊かな土壌が育てる、みずみずしい一品。</p>
       </li>
       <li>
-        <span class="clients__num">03</span>
-        <em>株式会社セブン&アイ・ホールディングス</em>
-        <small>Seven & i Holdings</small>
-      </li>
-      <li>
-        <span class="clients__num">04</span>
-        <em>京都物産展</em>
-        <small>Kyoto Bussan Exhibition</small>
-      </li>
-      <li>
-        <span class="clients__num">05</span>
-        <em>定期イベント（マルシェ）</em>
-        <small>Regular Marché Events</small>
+        <p class="merits__no">03</p>
+        <h3>低価格を実現</h3>
+        <p>中間マージンを徹底的にカット。生産者にもお客様にも、うれしい価格を。</p>
       </li>
     </ul>
   </div>
 </section>
 
-<!-- Company -->
-<section class="company section" id="company">
-  <div class="container company__inner">
-    <div class="company__head">
-      <span class="section__num">COMPANY — 07</span>
-      <p class="section__eyebrow">Company</p>
-      <h2 class="section__title">
-        <span>会社概要</span>
-      </h2>
-    </div>
+<!-- ============ Clients ============ -->
+<section class="sec clients" id="clients">
+  <div class="wrap">
+    <header class="sechead">
+      <p class="sechead__idx"><span>04</span> Clients</p>
+      <h2 class="sechead__title">主な販売先・お取引先。</h2>
+      <p class="sechead__desc">大手流通グループから、各地の物産展・マルシェまで。継続してお取引いただいていることが、私たちの仕事の確かさを示しています。</p>
+    </header>
 
-    <dl class="company__list">
+    <ul class="clist">
+      <li><span class="clist__no">01</span><b>東日本旅客鉄道株式会社</b><em>JR East</em></li>
+      <li><span class="clist__no">02</span><b>イオン株式会社</b><em>AEON Co., Ltd.</em></li>
+      <li><span class="clist__no">03</span><b>株式会社セブン&amp;アイ・ホールディングス</b><em>Seven &amp; i Holdings</em></li>
+      <li><span class="clist__no">04</span><b>京都物産展</b><em>Kyoto Bussan Exhibition</em></li>
+      <li><span class="clist__no">05</span><b>定期イベント（マルシェ）</b><em>Regular Marché Events</em></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ Voice ============ -->
+<section class="sec sec--alt voice" id="voice">
+  <div class="wrap voice__inner">
+    <header class="sechead">
+      <p class="sechead__idx"><span>05</span> Message</p>
+    </header>
+
+    <blockquote class="voice__quote">
+      <h2 class="voice__title">頼まれた仕事を、<br />ていねいに。</h2>
+      <p>
+        生鮮食品の直送も、野菜・果物の販売も、企業さん同士をつなぐ仕事も、お墓のお掃除も。ジャンルはちがっても、<strong>誰かに頼まれて、誰かのために動く</strong>という仕事の本質は同じだと思っています。
+      </p>
+      <p>
+        KMコーポレーションは、那須塩原を拠点に、暮らしと事業のあいだに必要な仕事を引き受ける会社です。ご相談をいただいたお仕事を、ひとつずつ、ていねいに。これからもそうやって続けていきます。
+      </p>
+      <footer class="voice__sign">
+        <span>株式会社KMコーポレーション</span>
+        <b>代表</b>
+      </footer>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ============ Team ============ -->
+<section class="sec team" id="team">
+  <div class="wrap">
+    <header class="sechead">
+      <p class="sechead__idx"><span>06</span> Team</p>
+      <h2 class="sechead__title">4つの仕事を、支える体制。</h2>
+      <p class="sechead__desc">配送、販売、現場、マッチング、受付、統括。役割は違っても、ひとつの会社のメンバーとして、それぞれの持ち場に取り組んでいます。</p>
+    </header>
+
+    <ul class="roles">
+      <li><b>配送</b><em>Delivery</em><p>那須塩原から首都圏まで自社便を運行し、生鮮品を翌日に届けます。</p></li>
+      <li><b>販売</b><em>Sales</em><p>大手取引先への卸売、物産展・マルシェなど、販売の現場を引き受けます。</p></li>
+      <li><b>現場</b><em>Field</em><p>農家さんとの連携から、お墓清掃の立ち合いまで、外回りの仕事を担います。</p></li>
+      <li><b>マッチング</b><em>Matching</em><p>月一度の交流会を設計・運営し、200社を超える企業のご縁を結びます。</p></li>
+      <li><b>受付</b><em>Customer Care</em><p>ご注文・お問い合わせの窓口として、ご相談を整理し社内へつなぎます。</p></li>
+      <li><b>統括</b><em>Director</em><p>4事業の全体統括。取引先・地域との関係づくりまで担うまとめ役です。</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ Company ============ -->
+<section class="sec sec--alt company" id="company">
+  <div class="wrap company__inner">
+    <header class="sechead">
+      <p class="sechead__idx"><span>07</span> Company</p>
+      <h2 class="sechead__title">会社概要</h2>
+    </header>
+
+    <dl class="spec">
       <div><dt>会社名</dt><dd>株式会社KMコーポレーション</dd></div>
-      <div><dt>代表事業</dt><dd>生鮮食品直送便 ／ 野菜・果物販売 ／ 人材紹介・ビジネスマッチング支援 ／ お墓お掃除代行サービス</dd></div>
+      <div><dt>代表事業</dt><dd>生鮮食品直送便／野菜・果物販売／人材紹介・ビジネスマッチング支援／お墓お掃除代行サービス</dd></div>
       <div><dt>主要産地</dt><dd>栃木県 那須塩原</dd></div>
-      <div><dt>主な販売先</dt><dd>東日本旅客鉄道株式会社、イオン株式会社、株式会社セブン&アイ・ホールディングス 他</dd></div>
+      <div><dt>主な販売先</dt><dd>東日本旅客鉄道株式会社、イオン株式会社、株式会社セブン&amp;アイ・ホールディングス 他</dd></div>
       <div><dt>登録社数</dt><dd>200社以上（ビジネスマッチング）</dd></div>
       <div><dt>事業エリア</dt><dd>全国</dd></div>
     </dl>
   </div>
 </section>
 
-<!-- Contact -->
-<section class="contact section" id="contact">
-  <div class="contact__bg" aria-hidden="true"></div>
-  <div class="container">
-    <div class="section__head section__head--light">
-      <span class="section__num">CONTACT — 08</span>
-      <p class="section__eyebrow">Contact</p>
-      <h2 class="section__title">
-        <span>お気軽に、</span>
-        <span class="accent">ご相談ください。</span>
-      </h2>
-      <p class="section__desc">配送のご依頼、お取引のご相談、マッチング会の参加申込まで。お問い合わせをお待ちしています。</p>
-    </div>
+<!-- ============ Contact ============ -->
+<section class="sec sec--navy contact" id="contact">
+  <div class="wrap contact__inner">
+    <header class="sechead sechead--light">
+      <p class="sechead__idx"><span>08</span> Contact</p>
+      <h2 class="sechead__title">お気軽に、ご相談ください。</h2>
+      <p class="sechead__desc">配送のご依頼、お取引のご相談、マッチング会の参加お申し込みまで。まずはお問い合わせください。</p>
+    </header>
 
     <div class="contact__cards">
-      <a class="contact__card" href="mailto:info@kmcorp.jp">
-        <span class="contact__card-eyebrow">Email</span>
-        <strong>info@kmcorp.jp</strong>
-        <p>メールでのお問い合わせはこちら</p>
-        <i class="contact__arrow" aria-hidden="true">→</i>
+      <a class="ccard ccard--link" href="mailto:info@kmcorp.jp">
+        <p class="ccard__label">Email</p>
+        <b class="ccard__value">info@kmcorp.jp</b>
+        <p class="ccard__note">ご注文・お取引のご相談・マッチング会のお申し込み</p>
+        <span class="ccard__arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="15" height="15"><path d="M5 12h13M12 5.5l6.5 6.5-6.5 6.5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
       </a>
-      <a class="contact__card" href="#top">
-        <span class="contact__card-eyebrow">Web Form</span>
-        <strong>お問い合わせフォーム</strong>
-        <p>ご注文・取引相談・マッチング会のお申込み</p>
-        <i class="contact__arrow" aria-hidden="true">→</i>
-      </a>
-      <a class="contact__card" href="tel:0000000000">
-        <span class="contact__card-eyebrow">Tel</span>
-        <strong>受付時間 9:00 - 18:00</strong>
-        <p>平日のお電話でのご相談</p>
-        <i class="contact__arrow" aria-hidden="true">→</i>
-      </a>
+
+      <div class="ccard">
+        <p class="ccard__label">受付時間</p>
+        <b class="ccard__value">平日 9:00 – 18:00</b>
+        <p class="ccard__note">土日祝はお休みをいただいております。メールでのご連絡は随時承ります。</p>
+      </div>
     </div>
   </div>
 </section>
@@ -663,36 +487,44 @@
 </main>
 
 <!-- Footer -->
-<footer class="footer">
-  <div class="container footer__inner">
-    <a href="#top" class="footer__brand" aria-label="ページの先頭へ">
-      <span class="brand__mark" aria-hidden="true">
-        <svg viewBox="0 0 48 48" width="40" height="40">
-          <circle cx="24" cy="24" r="22" fill="#fff"/>
-          <path d="M14 12h4v10.8l9-10.8h5l-9 10.7L33 36h-5l-7.4-11.4-2.6 3.1V36h-4z" fill="#0b3d91"/>
-        </svg>
-      </span>
-      <div class="footer__brand-text">
-        <em>KM Corporation</em>
-        <small>株式会社KMコーポレーション</small>
-      </div>
-      <svg class="footer__brand-up" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M5 12l7-7 7 7M12 5v14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
+<footer class="ftr">
+  <div class="wrap ftr__inner">
+    <div class="ftr__brand">
+      <a href="#top" class="logo logo--ftr" aria-label="ページの先頭へ戻る">
+        <span class="logo__mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" width="36" height="36" focusable="false">
+            <rect width="48" height="48" rx="7" fill="#fff"/>
+            <path d="M13 12.5h4.2v11L26.6 12.5h5.2l-9.3 11.1L32.6 35.5h-5.2l-7.7-11.8-2.5 3v8.8H13z" fill="#0d2f63"/>
+          </svg>
+        </span>
+        <span class="logo__text">
+          <em>KM Corporation</em>
+          <small>株式会社KMコーポレーション</small>
+        </span>
+      </a>
+      <p class="ftr__addr">栃木県 那須塩原</p>
+    </div>
 
-    <nav class="footer__nav" aria-label="フッターナビゲーション">
+    <nav class="ftr__nav" aria-label="フッターナビゲーション">
       <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#voice">Voice</a></li>
-        <li><a href="#services">Business</a></li>
-        <li><a href="#flow">Flow</a></li>
-        <li><a href="#team">Team</a></li>
-        <li><a href="#clients">Clients</a></li>
-        <li><a href="#company">Company</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">会社について</a></li>
+        <li><a href="#business">事業内容</a></li>
+        <li><a href="#direct">直送のしくみ</a></li>
+        <li><a href="#clients">取引実績</a></li>
+        <li><a href="#voice">代表メッセージ</a></li>
+        <li><a href="#team">体制</a></li>
+        <li><a href="#company">会社概要</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
       </ul>
     </nav>
+  </div>
 
-    <p class="footer__copy">© <span id="year"></span> KM Corporation. All rights reserved.</p>
+  <div class="wrap ftr__base">
+    <p>© <span id="year">2026</span> KM Corporation. All rights reserved.</p>
+    <a href="#top" class="ftr__top">
+      ページの先頭へ
+      <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M12 19V5M5.5 11.5L12 5l6.5 6.5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
   </div>
 </footer>
 
