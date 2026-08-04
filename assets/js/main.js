@@ -69,38 +69,85 @@
   /* ---- Reveal on scroll ----------------------------------- */
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  if (!reduceMotion && "IntersectionObserver" in window) {
-    const revealSelectors = [
-      ".sechead",
-      ".about__text",
-      ".pillars",
-      ".biz__item",
-      ".chart__row",
-      ".merits",
-      ".clist",
-      ".voice__quote",
-      ".roles",
-      ".spec",
-      ".contact__cards",
-    ];
+  /* Count a number up to whatever it already reads. Non-numeric content
+     (the "翌日" stat) is left alone. */
+  const countUp = (el, duration = 1500) => {
+    const target = parseInt(el.textContent.trim(), 10);
+    if (!Number.isFinite(target) || target <= 0) return;
+    const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+    let start = null;
+    const tick = (now) => {
+      if (start === null) start = now;
+      const p = Math.min((now - start) / duration, 1);
+      el.textContent = String(Math.round(target * easeOut(p)));
+      if (p < 1) requestAnimationFrame(tick);
+      else el.textContent = String(target);
+    };
+    el.textContent = "0";
+    requestAnimationFrame(tick);
+  };
 
-    const items = $$(revealSelectors.join(","));
-    items.forEach((el) => el.classList.add("reveal"));
+  if (!reduceMotion && "IntersectionObserver" in window) {
+    // Headings wipe up; everything else fades up; groups cascade.
+    const MASK = [".sechead__title", ".voice__title"];
+    const FADE = [
+      ".sechead__idx", ".sechead__desc",
+      ".about__text p", ".biz__head", ".biz__desc", ".biz__stat",
+      ".chart__label", ".chart__note",
+      ".voice__quote p", ".voice__sign",
+      ".ftr__brand", ".ftr__nav",
+    ];
+    const STAGGER = [
+      ".trust__list", ".pillars", ".biz__points", ".chips",
+      ".merits", ".clist", ".roles", ".spec", ".contact__cards",
+    ];
 
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
           entry.target.classList.add("is-in");
+          $$("[data-count]", entry.target).forEach((n) => countUp(n));
           io.unobserve(entry.target);
         });
       },
-      { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.08, rootMargin: "0px 0px -50px 0px" }
     );
 
-    items.forEach((el) => io.observe(el));
-    // The hero is deliberately absent from the list: it is the LCP block, and
-    // fading it in after the deferred script parses would flash it away first.
+    const watch = (el) => io.observe(el);
+
+    // A clipped element reports intersectionRatio 0 even while fully on
+    // screen, so the mask is triggered by its unclipped ancestor instead.
+    $$(MASK.join(",")).forEach((el) => el.classList.add("reveal-mask"));
+    $$(".sechead, .voice__quote").forEach(watch);
+
+    $$(FADE.join(",")).forEach((el) => {
+      el.classList.add("reveal");
+      // Siblings in the same block trail each other slightly.
+      const prev = el.previousElementSibling;
+      el.style.setProperty("--i", prev && prev.classList.contains("reveal") ? 1 : 0);
+      watch(el);
+    });
+
+    $$(STAGGER.join(",")).forEach((group) => {
+      group.classList.add("stagger");
+      Array.from(group.children).forEach((child, i) => child.style.setProperty("--i", i));
+      watch(group);
+    });
+
+    // Supply-chain rows animate hop by hop, so index every node.
+    $$(".chart__row").forEach((row) => {
+      $$(".chain__node", row).forEach((n, i) => {
+        n.style.setProperty("--i", i);
+        n.classList.add("is-anim");
+      });
+      watch(row);
+    });
+
+    // The hero is deliberately absent from the observer: it animates from CSS
+    // keyframes so it never flashes visible-then-hidden when this deferred
+    // script parses. The count is held back to meet the stats' own fade-in.
+    setTimeout(() => $$(".hero__stats b").forEach((el) => countUp(el)), 680);
   }
 
   /* ---- Scrollspy ------------------------------------------ */
